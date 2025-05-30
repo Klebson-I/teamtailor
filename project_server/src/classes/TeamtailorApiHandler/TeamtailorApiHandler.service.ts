@@ -5,7 +5,7 @@ import { ApiError } from "src/filters/GlobalFilter/types";
 export class TeamtailorApiHandler {
     private apiVersionHeader = '20240904';
     private acceptApiHeader = 'application/vnd.api+json';
-    private apiKey = '237da83e-8521-42d9-bcfe-35338690e103';
+    private apiKey = process.env.API_KEY;
 
     async getData<T>(url: string, method: string): Promise<T> {
         try {
