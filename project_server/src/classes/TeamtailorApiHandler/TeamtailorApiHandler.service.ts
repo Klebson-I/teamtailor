@@ -1,4 +1,5 @@
 import { Injectable } from "@nestjs/common";
+import { ApiError } from "src/filters/GlobalFilter/types";
 
 @Injectable()
 export class TeamtailorApiHandler {
@@ -19,7 +20,7 @@ export class TeamtailorApiHandler {
             const data = (await response.json() as { data: T });
             return data.data;
         } catch (e) {
-            throw new Error(e)
+            throw new ApiError(e);
         }
     }
 }
