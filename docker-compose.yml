@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  server:
+    build:
+      context: ./project_server
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./project_server:/server
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+
+  ui:
+    build:
+      context: ./project_ui
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./project_ui:/app
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped

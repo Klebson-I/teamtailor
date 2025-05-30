@@ -1,0 +1,6 @@
+/project_server/dist
+/project_server/node_modules
+/project_server/package-lock.json
+/project_ui/dist
+/project_ui/node_modules
+/project_ui/package-lock.json
