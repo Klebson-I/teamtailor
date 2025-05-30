@@ -1,8 +1,8 @@
 import { Module } from "@nestjs/common";
-import { TeamtailorApiHander } from "./TeamtailorApiHandler.service";
+import { TeamtailorApiHandler } from "./TeamtailorApiHandler.service";
 
 @Module({   
-    providers: [TeamtailorApiHander],
-    exports: [TeamtailorApiHander]
+    providers: [TeamtailorApiHandler],
+    exports: [TeamtailorApiHandler]
 })
 export class TeamtailorApiHandlerModule {}

@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { TeamtailorApiHander } from 'src/classes/TeamtailorApiHandler/TeamtailorApiHandler.service';
+import { TeamtailorApiHandler } from 'src/classes/TeamtailorApiHandler/TeamtailorApiHandler.service';
 import { Parser } from 'json2csv';
 
 export type CandidateRaw = {
@@ -25,7 +25,7 @@ export type ApplicationRaw = {
 @Injectable()
 export class TeamtailorService {
   constructor(
-    private apiHandler: TeamtailorApiHander,
+    private apiHandler: TeamtailorApiHandler,
   ) {}
 
   async getEmployeeData() {

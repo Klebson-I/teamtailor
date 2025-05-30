@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 
 @Injectable()
-export class TeamtailorApiHander {
+export class TeamtailorApiHandler {
     private apiVersionHeader = '20240904';
     private acceptApiHeader = 'application/vnd.api+json';
     private apiKey = '237da83e-8521-42d9-bcfe-35338690e103';
