@@ -5,6 +5,7 @@ import { TeamtailorService } from './teamtailor.service';
 
 describe('TeamtailorController', () => {
   let controller: TeamtailorController;
+  let service: TeamtailorService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -14,9 +15,16 @@ describe('TeamtailorController', () => {
     }).compile();
 
     controller = module.get<TeamtailorController>(TeamtailorController);
+    service = module.get<TeamtailorService>(TeamtailorService);
   });
 
-  it('should be defined', () => {
+  it('Should be defined', () => {
     expect(controller).toBeDefined();
+  });
+
+  it('Should call getEmployee method of teamtailor service when getEmployee of controller is called', () => {
+    const spyOnService = jest.spyOn(service, 'getEmployee').mockImplementation(async () => {});
+    controller.getEmployee();
+    expect(spyOnService).toHaveBeenCalled()
   });
 });
