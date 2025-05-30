@@ -1,26 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { TeamtailorApiHandler } from 'src/classes/TeamtailorApiHandler/TeamtailorApiHandler.service';
 import { Parser } from 'json2csv';
-
-export type CandidateRaw = {
-  id: string;
-  attributes: {
-    "first-name": string;
-    "last-name": string;
-    email: string;
-  };
-  relationships: {
-    "job-applications": {
-      data: { id: string }[];
-    };
-  };
-};
-
-export type ApplicationRaw = {
-  attributes: {
-    'created-at': string;
-  }
-}
+import { ApplicationRaw, CandidateRaw } from './types';
 
 @Injectable()
 export class TeamtailorService {
@@ -33,7 +14,6 @@ export class TeamtailorService {
 
     const candidatesData = (candidatesResponse as CandidateRaw[]).map(candidate => {
       const jobApplicationIds = candidate.relationships["job-applications"]?.data.map(app => app.id) || [];
-      console.log(jobApplicationIds)
       return {
         candidate_id: candidate.id,
         first_name: candidate.attributes["first-name"],
