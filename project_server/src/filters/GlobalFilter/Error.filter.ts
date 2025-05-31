@@ -17,7 +17,7 @@ export class GlobalExceptionFilter implements ExceptionFilter {
 
     if (exception instanceof ApiError) {
         return response.status(500).json({
-            statusCode: status,
+            statusCode: 500,
             timestamp: new Date().toISOString(),
             path: request.url,
             message: 'Error during Teamtailor api call',
@@ -25,7 +25,7 @@ export class GlobalExceptionFilter implements ExceptionFilter {
     }
 
     response.status(500).json({
-      statusCode: status,
+      statusCode: 500,
       timestamp: new Date().toISOString(),
       path: request.url,
       message: exception instanceof HttpException ? exception.getResponse() : 'Internal Server Error',

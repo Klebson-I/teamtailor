@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable, Logger } from "@nestjs/common";
 import { ApiError } from "src/filters/GlobalFilter/types";
 
 @Injectable()
@@ -17,10 +17,11 @@ export class TeamtailorApiHandler {
                     'X-Api-Version': this.apiVersionHeader,
                 }
             });
-            const data = (await response.json() as { data: T });
-            return data.data;
+            const data = (await response.json() as T);
+            return data;
         } catch (e) {
-            throw new ApiError(e);
+            new Logger().error(e);
+            return {} as T;
         }
     }
 }
