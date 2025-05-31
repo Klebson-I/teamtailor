@@ -1,5 +1,4 @@
 import { Injectable, Logger } from "@nestjs/common";
-import { ApiError } from "src/filters/GlobalFilter/types";
 
 @Injectable()
 export class TeamtailorApiHandler {
@@ -20,7 +19,9 @@ export class TeamtailorApiHandler {
             const data = (await response.json() as T);
             return data;
         } catch (e) {
-            new Logger().error(e);
+            new Logger().error(`Error when fetch ${url} , Error: ${e.message}`);
+            // Some data from API are not valid JSON. I want to keep file creation so i skip that.
+            // throw new ApiError(e);
             return {} as T;
         }
     }
