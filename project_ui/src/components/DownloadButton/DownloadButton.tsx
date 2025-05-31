@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { fetchEmployees } from "./utils";
-import { Circles } from "react-loader-spinner";
 
 const DownloadButton = () => {
   const [isFetching, setIsFetching] = useState(false);
@@ -27,15 +26,7 @@ const DownloadButton = () => {
     >
         {
             isFetching
-            ? <Circles
-                height="80"
-                width="80"
-                color="white"
-                ariaLabel="circles-loading"
-                wrapperStyle={{}}
-                wrapperClass=""
-                visible={true}
-            />
+            ? <span className="loading loading-dots loading-xl bg-white"></span>
             : <span className="text-4xl text-fuchsia-50">Download</span>
         }
     </button>
