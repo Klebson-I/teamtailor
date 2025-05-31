@@ -9,6 +9,7 @@ const DownloadButton = () => {
 
   const onClickHandler = async () => {
     try {
+        if (isFetching) return;
       setIsFetching(true);
       await fetchEmployees();
       notifySuccess();
@@ -23,6 +24,7 @@ const DownloadButton = () => {
     <button
       className="bg-gradient-to-r from-pink-400 via-pink-500 to-fuchsia-500 rounded-full shadow-xl hover:scale-105 hover:brightness-110 transition-all duration-300 w-96 h-40 cursor-pointer flex items-center justify-center gap-4"
       onClick={onClickHandler}
+      disabled={isFetching}
     >
         {
             isFetching
